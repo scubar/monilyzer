@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  monilyzer.api:
+    image: monilyzer.api
+    build:
+      context: ./Monilyzer.API
+      dockerfile: Dockerfile

@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monilyzer", "Monilyzer\Monilyzer.csproj", "{65CA0033-0F0B-480C-A990-1FF868AD97CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monilyzer.API", "Monilyzer.API\Monilyzer.API.csproj", "{F2FEB330-C17F-427E-B888-26A685726A1E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{295F15E6-0D5D-4A1B-9FE6-CA0A3CA9F23C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65CA0033-0F0B-480C-A990-1FF868AD97CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65CA0033-0F0B-480C-A990-1FF868AD97CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65CA0033-0F0B-480C-A990-1FF868AD97CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65CA0033-0F0B-480C-A990-1FF868AD97CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FEB330-C17F-427E-B888-26A685726A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FEB330-C17F-427E-B888-26A685726A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FEB330-C17F-427E-B888-26A685726A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FEB330-C17F-427E-B888-26A685726A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295F15E6-0D5D-4A1B-9FE6-CA0A3CA9F23C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295F15E6-0D5D-4A1B-9FE6-CA0A3CA9F23C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295F15E6-0D5D-4A1B-9FE6-CA0A3CA9F23C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295F15E6-0D5D-4A1B-9FE6-CA0A3CA9F23C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
