@@ -12,14 +12,7 @@ namespace Monilyzer.Model
 
         public string Name { get; set; }
 
-        public IEnumerable<Location> Locations { get; set; }
-
-        public bool ShouldSerializeLocations(){
-            return SerializeLocations;
-        }
-
-        [NotMapped]
-        public bool SerializeLocations { get; set; } = false;
+        public virtual List<Location> Locations { get; set; }
 
         public void Update(Customer customer)
         {

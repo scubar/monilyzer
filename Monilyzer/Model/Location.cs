@@ -11,7 +11,7 @@ namespace Monilyzer.Model
 
         public string Name { get; set; }
 
-        public IEnumerable<Node> Nodes { get; set; }
+        public virtual List<Node> Nodes { get; set; }
 
         public void Update(Location location)
         {

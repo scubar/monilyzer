@@ -15,9 +15,9 @@ namespace Monilyzer.Model
 
         public Customer Customer { get; set; }
 
-        public IEnumerable<Interface> Interfaces { get; set; }
+        public virtual List<Interface> Interfaces { get; set; }
 
-        public IEnumerable<Volume> Volumes { get; set; }
+        public virtual List<Volume> Volumes { get; set; }
 
         public void Update(Node node)
         {

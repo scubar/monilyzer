@@ -22,22 +22,10 @@ namespace Monilyzer.Data
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserRole>()
-                .HasKey(t => new { t.UserGuid, t.RoleGuid });
-
-            modelBuilder.Entity<UserRole>()
-                .HasOne(pt => pt.User)
-                .WithMany(p => p.UserRoles)
-                .HasForeignKey(pt => pt.UserGuid);
-
-            modelBuilder.Entity<UserRole>()
-                .HasOne(pt => pt.Role)
-                .WithMany(t => t.UserRoles)
-                .HasForeignKey(pt => pt.RoleGuid);
         }
     }
 }

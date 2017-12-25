@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
 namespace Monilyzer.Model
 {
-    public class Role
+    public enum Role
     {
-        [Key]
-        public Guid Guid { get; set; }
-
-        public IEnumerable<UserRole> UserRoles { get; set; }
-
-        public string Name { get; set; }
+        Administrator = 100,
+        Standard = 50,
+        ReadOnly = 0
     }
 }
