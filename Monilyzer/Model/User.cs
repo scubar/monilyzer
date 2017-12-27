@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
@@ -32,6 +31,8 @@ namespace Monilyzer.Model
 
         public static string GetPasswordHash(string password)
         {
+            if (string.IsNullOrEmpty(password)) throw new NullReferenceException(nameof(password));
+
             var sha1 = new SHA1CryptoServiceProvider();
             var sha1data = sha1.ComputeHash(Encoding.ASCII.GetBytes(password));
             return Encoding.ASCII.GetString(sha1data);

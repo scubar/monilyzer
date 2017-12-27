@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Monilyzer.API.Services;
 using Monilyzer.Data;
@@ -12,6 +13,7 @@ namespace Monilyzer.API.Controllers
     /// <summary>
     /// Controller for interacting with Location objects.
     /// </summary>
+    [Authorize]
     [Route("api/v1/locations")]
     public class LocationController : Controller
     {
@@ -37,6 +39,7 @@ namespace Monilyzer.API.Controllers
         }
 
         // POST api/v1/locations
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public Location Post([FromBody]Location location)
         {
@@ -44,6 +47,7 @@ namespace Monilyzer.API.Controllers
         }
 
         // PUT api/v1/locations/<Guid>
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{guid}")]
         public Location Put(Guid guid, [FromBody]Location location)
         {
@@ -51,6 +55,7 @@ namespace Monilyzer.API.Controllers
         }
 
         // DELETE api/v1/locations/<Guid>
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{guid}")]
         public void Delete(Guid guid)
         {

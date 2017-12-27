@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Monilyzer.API.Services;
 using Monilyzer.Data;
@@ -10,6 +11,7 @@ namespace Monilyzer.API.Controllers
     /// <summary>
     /// Controller for interacting with Customer objects.
     /// </summary>
+    [Authorize]
     [Route("api/v1/customers")]
     public class CustomerController : Controller
     {
@@ -35,6 +37,7 @@ namespace Monilyzer.API.Controllers
         }
 
         // POST api/v1/customers
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public Customer Post([FromBody]Customer customer)
         {
@@ -42,6 +45,7 @@ namespace Monilyzer.API.Controllers
         }
 
         // PUT api/v1/customers/<Guid>
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{guid}")]
         public Customer Put(Guid guid,[FromBody]Customer customer)
         {
@@ -49,6 +53,7 @@ namespace Monilyzer.API.Controllers
         }
 
         // DELETE api/v1/customers/<Guid>
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{guid}")]
         public void Delete(Guid guid)
         {

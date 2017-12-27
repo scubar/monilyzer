@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Monilyzer.Data;
 using Monilyzer.Model;
 
@@ -17,12 +15,17 @@ namespace Monilyzer.API.Data
                 return;
             }
 
-            var user = new User { Username = "Administrator", Displayname = "Administrator", Password = "" };
-            var userRole = new UserRole(Role.Administrator);
+            var adminUser = new User { Username = "Administrator", Displayname = "Administrator", Password = "password", Email="admin@monilyzer.io" };
+            var readOnlyUser = new User { Username = "ReadOnly", Displayname = "Read Only", Password = "password", Email = "readonly@monilyzer.io" };
 
-            user.UserRoles.Add(userRole);
+            var adminRole = new UserRole(Role.Administrator);
+            var readOnlyRole = new UserRole(Role.ReadOnly);
 
-            monilyzerContext.Users.Add(user);
+            adminUser.UserRoles.Add(adminRole);
+            readOnlyUser.UserRoles.Add(readOnlyRole); 
+
+            monilyzerContext.Users.Add(adminUser);
+            monilyzerContext.Users.Add(readOnlyUser); 
 
             monilyzerContext.SaveChanges();
         }

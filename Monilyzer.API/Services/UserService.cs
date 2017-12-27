@@ -27,8 +27,10 @@ namespace Monilyzer.API.Services
 
         public User GetUser(string username, string password)
         {
+            var passwordHash = User.GetPasswordHash(password);
+
             var user = MonilyzerContext.Users.Include(u => u.UserRoles).FirstOrDefault(u => u.Username == username &&
-                                                             u.Password == User.GetPasswordHash(password));
+                                                             u.Password == passwordHash );
 
             if (user == null) throw new UnauthorizedAccessException();
 
