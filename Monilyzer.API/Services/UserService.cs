@@ -20,7 +20,7 @@ namespace Monilyzer.API.Services
         {
             var user = MonilyzerContext.Users.Include(u => u.UserRoles).FirstOrDefault(u => u.Guid == guid);
 
-            if (user == null) throw new NullReferenceException();
+            if (user == null) throw new NullReferenceException("User not found.");
 
             return user;
         }
