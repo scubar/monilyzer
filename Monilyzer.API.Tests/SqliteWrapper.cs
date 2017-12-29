@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Monilyzer.API.Data;
 using Monilyzer.Data;
 
 namespace Monilyzer.API.Tests
@@ -10,7 +11,7 @@ namespace Monilyzer.API.Tests
         SqliteConnection connection;
         DbContextOptions<MonilyzerContext> dbContextOptions;
 
-        public SqliteWrapper()
+        public SqliteWrapper(bool seed = false)
         {
             connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -23,6 +24,7 @@ namespace Monilyzer.API.Tests
             using (var context = GetContext())
             {
                 context.Database.EnsureCreated();
+                if (seed) ContextInitializer.Initialize(context);
             }
         }
 

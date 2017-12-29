@@ -14,6 +14,8 @@ namespace Monilyzer.Model
 
         public virtual List<Location> Locations { get; set; }
 
+        public virtual List<Node> Nodes { get; set; }
+
         public void Update(Customer customer)
         {
             if (!string.IsNullOrEmpty(customer.Name))
