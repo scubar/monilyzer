@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Monilyzer.Model
+namespace Monilyzer.Model.Enums
 {
     public enum Duplex
     {

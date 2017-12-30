@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Monilyzer.Model.Enums;
 
 namespace Monilyzer.Model
 {
@@ -7,6 +8,8 @@ namespace Monilyzer.Model
     {
         [Key]
         public Guid Guid { get; set; }
+
+        public string ExternalId { get; set; }
 
         /// <summary>
         /// Interface Name
@@ -54,5 +57,35 @@ namespace Monilyzer.Model
         public decimal RecieveBandwidth { get; set; }
 
         //TODO: Error and Packet Counters
+
+        public void Update(Interface uinterface)
+        {
+            if (uinterface != null)
+            {
+                Name = uinterface.Name;
+                Speed = uinterface.Speed;
+                TransmitBandwidth = uinterface.TransmitBandwidth;
+                RecieveBandwidth = uinterface.RecieveBandwidth;
+
+                LastUpdated = DateTime.UtcNow;
+            }
+        }
+
+        public void PollingUpdate(Interface uinterface)
+        {
+            if (uinterface != null)
+            {
+                Duplex = uinterface.Duplex;
+                TransmitUtilization = uinterface.TransmitUtilization;
+                RecieveUtilization = uinterface.RecieveUtilization;
+                //TODO: Update Error and Packet Counters
+
+                LastPolled = DateTime.UtcNow;
+            }    
+        }
+
+        public DateTime LastUpdated { get; set; } = DateTimeHelper.DefaultDateTime;
+
+        public DateTime LastPolled { get; set; } = DateTimeHelper.DefaultDateTime;
     }
 }

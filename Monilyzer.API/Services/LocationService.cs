@@ -58,7 +58,7 @@ namespace Monilyzer.API.Services
 
             foreach(var node in Location.Nodes)
             {
-                node.Location = null;
+                node.SetLocation(null);
             }
 
             MonilyzerContext.Locations.Remove(Location);
