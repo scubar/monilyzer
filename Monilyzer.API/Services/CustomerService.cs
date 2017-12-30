@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Monilyzer.Data;
 using Monilyzer.Model;
 
@@ -17,7 +18,10 @@ namespace Monilyzer.API.Services
 
         public Customer GetCustomer(Guid guid)
         {
-            var customer = MonilyzerContext.Customers.FirstOrDefault(c => c.Guid == guid);
+            var customer = MonilyzerContext.Customers
+                                           .Include(c => c.Nodes)
+                                           .Include(c => c.Locations)
+                                           .FirstOrDefault(c => c.Guid == guid);
 
             if (customer == null) throw new NullReferenceException();
 

@@ -56,6 +56,8 @@ namespace Monilyzer.Model
         /// </summary>
         public decimal RecieveBandwidth { get; set; }
 
+        public Guid NodeGuid { get; set; }
+
         //TODO: Error and Packet Counters
 
         public void Update(Interface uinterface)

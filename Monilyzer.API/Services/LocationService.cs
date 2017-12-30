@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Monilyzer.Data;
 using Monilyzer.Model;
 
@@ -20,7 +21,9 @@ namespace Monilyzer.API.Services
 
         public Location GetLocation(Guid guid)
         {
-            var location = MonilyzerContext.Locations.FirstOrDefault(l => l.Guid == guid);
+            var location = MonilyzerContext.Locations
+                                           .Include(l => l.Nodes)
+                                           .FirstOrDefault(l => l.Guid == guid);
 
             if (location == null) throw new NullReferenceException();
 
@@ -55,11 +58,6 @@ namespace Monilyzer.API.Services
         public void DeleteLocation(Guid guid)
         {
             var Location = GetLocation(guid);
-
-            foreach(var node in Location.Nodes)
-            {
-                node.SetLocation(null);
-            }
 
             MonilyzerContext.Locations.Remove(Location);
 

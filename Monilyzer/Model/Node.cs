@@ -36,27 +36,27 @@ namespace Monilyzer.Model
         /// <summary>
         /// Node Polling IP Address.
         /// </summary>
-        public IPAddress IPAddress { get; set; }
+        public string IPAddress { get; set; }
 
         /// <summary>
         /// Node Location.
         /// </summary>
-        public Location Location { get; set; }
+        public Guid LocationGuid { get; set; }
 
         /// <summary>
         /// Node Customer.
         /// </summary>
-        public Customer Customer { get; set; }
+        public Guid CustomerGuid { get; set; }
 
         /// <summary>
         /// Node Interfaces.
         /// </summary>
-        public virtual List<Interface> Interfaces { get; set; }
+        public virtual List<Interface> Interfaces { get; set; } = new List<Interface>();
 
         /// <summary>
         /// Node Volumes.
         /// </summary>
-        public virtual List<Volume> Volumes { get; set; }
+        public virtual List<Volume> Volumes { get; set; } = new List<Volume>();
 
         public void Update(Node node)
         {

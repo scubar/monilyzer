@@ -30,6 +30,8 @@ namespace Monilyzer.Model
         /// </summary>
         public decimal CapacityUtilizationPercentage => (Capacity / CapacityUtilization) * 100;
 
+        public Guid NodeGuid { get; set; }
+
         public void Update(Volume volume)
         {
             if (volume != null)

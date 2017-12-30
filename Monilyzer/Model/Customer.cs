@@ -10,11 +10,14 @@ namespace Monilyzer.Model
         [Key]
         public Guid Guid { get; set; }
 
+        /// <summary>
+        /// Customer Name.
+        /// </summary>
         public string Name { get; set; }
 
-        public virtual List<Location> Locations { get; set; }
+        public virtual List<Location> Locations { get; set; } = new List<Location>();
 
-        public virtual List<Node> Nodes { get; set; }
+        public virtual List<Node> Nodes { get; set; } = new List<Node>();
 
         public void Update(Customer customer)
         {
@@ -23,5 +26,7 @@ namespace Monilyzer.Model
                 Name = customer.Name;
             }      
         }
+
+        public DateTime LastUpdated { get; set; } = DateTimeHelper.DefaultDateTime;
     }
 }
