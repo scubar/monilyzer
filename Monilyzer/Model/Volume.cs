@@ -8,6 +8,9 @@ namespace Monilyzer.Model
         [Key]
         public Guid Guid { get; set; }
 
+        /// <summary>
+        /// External ID of the Volume.
+        /// </summary>
         public string ExternalId { get; set; }
 
         /// <summary>

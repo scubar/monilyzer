@@ -9,6 +9,10 @@ namespace Monilyzer.Model
         [Key]
         public Guid Guid { get; set; }
 
+        /// <summary>
+        /// External ID of the Interface.
+        /// </summary>
+        /// <value>The external identifier.</value>
         public string ExternalId { get; set; }
 
         /// <summary>
