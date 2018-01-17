@@ -17,7 +17,17 @@ namespace Monilyzer.Model
 
         public virtual List<Location> Locations { get; set; } = new List<Location>();
 
+        public bool ShouldSerializeLocations()
+        {
+            return Locations.Count > 0;
+        }
+
         public virtual List<Node> Nodes { get; set; } = new List<Node>();
+
+        public bool ShouldSerializeNodes()
+        {
+            return Nodes.Count > 0;
+        }
 
         public void Update(Customer customer)
         {

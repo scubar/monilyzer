@@ -56,10 +56,20 @@ namespace Monilyzer.Model
         /// </summary>
         public virtual List<Interface> Interfaces { get; set; } = new List<Interface>();
 
+        public bool ShouldSerializeInterfaces()
+        {
+            return Interfaces.Count > 0;
+        }
+
         /// <summary>
         /// Node Volumes.
         /// </summary>
         public virtual List<Volume> Volumes { get; set; } = new List<Volume>();
+
+        public bool ShouldSerializeVolumes()
+        {
+            return Volumes.Count > 0;
+        }
 
         public void Update(Node node)
         {

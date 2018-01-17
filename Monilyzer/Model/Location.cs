@@ -55,7 +55,12 @@ namespace Monilyzer.Model
         /// <summary>
         /// Location Nodes.
         /// </summary>
-        public virtual List<Node> Nodes { get; set; } = new List<Node>(); 
+        public virtual List<Node> Nodes { get; set; } = new List<Node>();
+
+        public bool ShouldSerializeNodes()
+        {
+            return Nodes.Count > 0;
+        }
 
         public Guid CustomerGuid { get; set; }
 
@@ -73,5 +78,6 @@ namespace Monilyzer.Model
         }
 
         public DateTime LastUpdated { get; set; } = DateTimeHelper.DefaultDateTime;
+        public DateTime LastPolled { get; set; } = DateTimeHelper.DefaultDateTime;
     }
 }
