@@ -44,7 +44,7 @@ namespace Monilyzer.Model
         /// <summary>
         /// Node Location.
         /// </summary>
-        public Guid LocationGuid { get; set; }
+        public Guid? LocationGuid { get; set; }
 
         /// <summary>
         /// Node Customer.
