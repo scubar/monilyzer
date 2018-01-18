@@ -5,14 +5,14 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Monilyzer.Data;
+using Monilyzer.API.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Services
 {
-    public class TokenService
+    public class TokenRepository
     {
-        public TokenService(MonilyzerContext monilyzerContext, IConfiguration configuration)
+        public TokenRepository(MonilyzerContext monilyzerContext, IConfiguration configuration)
         {
             MonilyzerContext = monilyzerContext;
             Configuration = configuration;
@@ -26,7 +26,7 @@ namespace Monilyzer.API.Services
         {
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SymmetricSecurityKey"]));
 
-            var user = new UserService(MonilyzerContext).GetUser(usernamePassword.Username, usernamePassword.Password);
+            var user = new UserRepository(MonilyzerContext).GetUser(usernamePassword.Username, usernamePassword.Password);
 
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.Name, user.Username),

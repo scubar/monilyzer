@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Monilyzer.API.Data;
 using Monilyzer.API.Services;
-using Monilyzer.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Controllers
@@ -28,14 +28,14 @@ namespace Monilyzer.API.Controllers
         [HttpGet]
         public IEnumerable<Node> Get()
         {
-            return new NodeService(MonilyzerContext).GetNodes(); 
+            return new NodeRepository(MonilyzerContext).GetNodes(); 
         }
 
         // GET api/v1/nodes/<Guid>
         [HttpGet("{guid}")]
         public Node Get(Guid guid)
         {
-            return new NodeService(MonilyzerContext).GetNode(guid);
+            return new NodeRepository(MonilyzerContext).GetNode(guid);
         }
 
         // POST api/v1/nodes
@@ -43,7 +43,7 @@ namespace Monilyzer.API.Controllers
         [HttpPost]
         public Node Post([FromBody]Node node)
         {
-            return new NodeService(MonilyzerContext).CreateNode(node); 
+            return new NodeRepository(MonilyzerContext).CreateNode(node); 
         }
 
         // PUT api/v1/nodes/<Guid>
@@ -51,7 +51,7 @@ namespace Monilyzer.API.Controllers
         [HttpPut("{guid}")]
         public Node Put(Guid guid,[FromBody]Node node)
         {
-            return new NodeService(MonilyzerContext).UpdateNode(guid, node); 
+            return new NodeRepository(MonilyzerContext).UpdateNode(guid, node); 
         }
 
         // DELETE api/v1/nodes/<Guid>
@@ -59,7 +59,7 @@ namespace Monilyzer.API.Controllers
         [HttpDelete("{guid}")]
         public void Delete(Guid guid)
         {
-            new NodeService(MonilyzerContext).DeleteNode(guid); 
+            new NodeRepository(MonilyzerContext).DeleteNode(guid); 
         }
     }
 }

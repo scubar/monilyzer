@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Monilyzer.API.Data;
 using Monilyzer.API.Services;
-using Monilyzer.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Controllers
@@ -28,7 +28,7 @@ namespace Monilyzer.API.Controllers
         [HttpPost]
         public string Post([FromBody]UsernamePassword usernamePassword)
         {
-            return new TokenService(MonilyzerContext,Configuration).GetToken(usernamePassword); 
+            return new TokenRepository(MonilyzerContext,Configuration).GetToken(usernamePassword); 
         }
     }
 }

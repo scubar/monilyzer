@@ -2,7 +2,6 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Monilyzer.API.Data;
-using Monilyzer.Data;
 
 namespace Monilyzer.API.Tests
 {

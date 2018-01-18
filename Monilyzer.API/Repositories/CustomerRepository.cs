@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Monilyzer.Data;
+using Monilyzer.API.Data;
 using Monilyzer.Model;
 
-namespace Monilyzer.API.Services
+namespace Monilyzer.API.Repositories
 {
-    public class CustomerService
+    public class CustomerRepository
     {
         private MonilyzerContext MonilyzerContext { get; set; }
 
-        public CustomerService(MonilyzerContext monilyzerContext)
+        public CustomerRepository(MonilyzerContext monilyzerContext)
         {
             MonilyzerContext = monilyzerContext;
         }

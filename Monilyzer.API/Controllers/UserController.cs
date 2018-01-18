@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Monilyzer.API.Data;
+using Monilyzer.API.HostedServices;
 using Monilyzer.API.Services;
-using Monilyzer.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Controllers
@@ -26,14 +27,14 @@ namespace Monilyzer.API.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return new UserService(MonilyzerContext).GetUsers(); 
+            return new UserRepository(MonilyzerContext).GetUsers(); 
         }
 
         // GET api/v1/users/<Guid>
         [HttpGet("{guid}")]
         public User Get(Guid guid)
         {
-            return new UserService(MonilyzerContext).GetUser(guid);
+            return new UserRepository(MonilyzerContext).GetUser(guid);
         }
 
         // POST api/v1/users
@@ -41,7 +42,7 @@ namespace Monilyzer.API.Controllers
         [HttpPost]
         public User Post([FromBody]User user)
         {
-            return new UserService(MonilyzerContext).CreateUser(user); 
+            return new UserRepository(MonilyzerContext).CreateUser(user); 
         }
 
         // PUT api/v1/users/<Guid>
@@ -49,7 +50,7 @@ namespace Monilyzer.API.Controllers
         [HttpPut("{guid}")]
         public User Put(Guid guid,[FromBody]User user)
         {
-            return new UserService(MonilyzerContext).UpdateUser(guid, user); 
+            return new UserRepository(MonilyzerContext).UpdateUser(guid, user); 
         }
 
         // DELETE api/v1/users/<Guid>
@@ -57,7 +58,7 @@ namespace Monilyzer.API.Controllers
         [HttpDelete("{guid}")]
         public void Delete(Guid guid)
         {
-            new UserService(MonilyzerContext).DeleteUser(guid); 
+            new UserRepository(MonilyzerContext).DeleteUser(guid); 
         }
     }
 }

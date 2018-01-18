@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Monilyzer.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Data

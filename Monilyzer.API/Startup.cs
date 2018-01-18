@@ -5,10 +5,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Monilyzer.API.Data;
 using Monilyzer.API.Filters;
-using Monilyzer.Data;
+using Monilyzer.API.HostedServices;
 using Newtonsoft.Json.Serialization;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace Monilyzer.API
 {
@@ -60,11 +65,21 @@ namespace Monilyzer.API
                 };
             });
 
-            services.AddSingleton<IConfiguration>(Configuration); 
+            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddSingleton<IHostedService, AlertService>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            //add NLog to .NET Core
+            loggerFactory.AddNLog();
+
+            //Enable ASP.NET Core features (NLog.web) - only needed for ASP.NET Core users
+            app.AddNLogWeb();
+
+            //needed for non-NETSTANDARD platforms: configure nlog.config in your project root. NB: you need NLog.Web.AspNetCore package for this. 
+            env.ConfigureNLog("nlog.config");
+
             app.UseAuthentication(); 
 
             if (env.IsDevelopment())

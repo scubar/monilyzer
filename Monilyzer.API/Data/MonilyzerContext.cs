@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Monilyzer.Model;
 
-namespace Monilyzer.Data
+namespace Monilyzer.API.Data
 {
     public class MonilyzerContext : DbContext
     {

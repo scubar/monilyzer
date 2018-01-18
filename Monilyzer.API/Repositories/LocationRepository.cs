@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Monilyzer.Data;
+using Monilyzer.API.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Services
 {
-    public class LocationService
+    public class LocationRepository
     { 
         MonilyzerContext MonilyzerContext { get; set; }
 
-        public LocationService(MonilyzerContext monilyzerContext)
+        public LocationRepository(MonilyzerContext monilyzerContext)
         {
             MonilyzerContext = monilyzerContext;
         }

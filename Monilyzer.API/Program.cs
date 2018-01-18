@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Monilyzer.API.Data;
-using Monilyzer.Data;
 
 namespace Monilyzer.API
 {

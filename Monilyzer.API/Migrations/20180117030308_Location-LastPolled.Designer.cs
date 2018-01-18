@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Monilyzer.Data;
 using Monilyzer.Model;
 using Monilyzer.Model.Enums;
 using System;
+using Monilyzer.API.Data;
 
 namespace Monilyzer.API.Migrations
 {

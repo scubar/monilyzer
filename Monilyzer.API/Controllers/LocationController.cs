@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Monilyzer.API.Data;
 using Monilyzer.API.Services;
-using Monilyzer.Data;
 using Monilyzer.Model;
 
 namespace Monilyzer.API.Controllers
@@ -28,14 +28,14 @@ namespace Monilyzer.API.Controllers
         [HttpGet]
         public IEnumerable<Location> Get()
         {
-            return new LocationService(MonilyzerContext).GetLocations();
+            return new LocationRepository(MonilyzerContext).GetLocations();
         }
 
         // GET api/v1/locations/<Guid>
         [HttpGet("{guid}")]
         public Location Get(Guid guid)
         {
-            return new LocationService(MonilyzerContext).GetLocation(guid); 
+            return new LocationRepository(MonilyzerContext).GetLocation(guid); 
         }
 
         // POST api/v1/locations
@@ -43,7 +43,7 @@ namespace Monilyzer.API.Controllers
         [HttpPost]
         public Location Post([FromBody]Location location)
         {
-            return new LocationService(MonilyzerContext).CreateLocation(location); 
+            return new LocationRepository(MonilyzerContext).CreateLocation(location); 
         }
 
         // PUT api/v1/locations/<Guid>
@@ -51,7 +51,7 @@ namespace Monilyzer.API.Controllers
         [HttpPut("{guid}")]
         public Location Put(Guid guid, [FromBody]Location location)
         {
-            return new LocationService(MonilyzerContext).UpdateLocation(guid, location); 
+            return new LocationRepository(MonilyzerContext).UpdateLocation(guid, location); 
         }
 
         // DELETE api/v1/locations/<Guid>
@@ -59,7 +59,7 @@ namespace Monilyzer.API.Controllers
         [HttpDelete("{guid}")]
         public void Delete(Guid guid)
         {
-            new LocationService(MonilyzerContext).DeleteLocation(guid); 
+            new LocationRepository(MonilyzerContext).DeleteLocation(guid); 
         }
     }
 }
