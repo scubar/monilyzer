@@ -39,6 +39,9 @@ namespace Monilyzer.API
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                // Scope Validation is disabled to allow the EF Context to be passed into hosted service singletons.
+                // https://stackoverflow.com/questions/44180773/dependency-injection-in-asp-net-core-2-throws-exception
+                .UseDefaultServiceProvider(options => options.ValidateScopes = false)
                 .Build();
     }
 }
