@@ -3,11 +3,10 @@ namespace Monilyzer.Model.Enums
 {
     public enum Status
     {
-        Unknown,
-        Up,
-        Warning,
+        None,
         Down,
-        Unreachable,
+        Warning,
+        Up,
         Maintenance
     }
 }

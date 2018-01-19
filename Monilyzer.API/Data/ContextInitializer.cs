@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Monilyzer.Model;
+using Monilyzer.Model.Enums;
 
 namespace Monilyzer.API.Data
 {
@@ -24,7 +25,7 @@ namespace Monilyzer.API.Data
             monilyzerContext.Users.Add(adminUser);
             monilyzerContext.Users.Add(readOnlyUser);
 
-            var customer1 = new Customer { Name = "Customer 1" };
+            var customer1 = new Customer { Name = "Customer 1", Status = Status.Down };
             var location1 = new Location { Name = "Main Location", City = "Palo Alto", State = "CA", Country = "USA", Latitude=37.4256448, Longitude=-122.1703694 };
             var node1 = new Node { Name = "Node1" };
             var interface1 = new Interface { Name = "Interface1" };
@@ -39,6 +40,18 @@ namespace Monilyzer.API.Data
             customer1.Locations.Add(location1);
 
             monilyzerContext.Customers.Add(customer1);
+
+            var alertDefinition = new AlertDefinition
+            {
+                Name = "Customer not in UP status",
+                AlertObjectType = MonilyzerObjectType.Customer,
+                AlertObjectPropertyType = MonilyzerPropertyType.Status,
+                AlertStatusCondition = Status.Up,
+                EvaluationInterval = 30
+            };
+
+            monilyzerContext.AlertDefinitions.Add(alertDefinition);
+
             monilyzerContext.SaveChanges();
         }
     }

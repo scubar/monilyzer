@@ -56,11 +56,7 @@ namespace Monilyzer.Model
         /// Location Nodes.
         /// </summary>
         public virtual List<Node> Nodes { get; set; } = new List<Node>();
-
-        public bool ShouldSerializeNodes()
-        {
-            return Nodes.Count > 0;
-        }
+        public List<ActiveAlert> ActiveAlerts { get; set; } = new List<ActiveAlert>();
 
         public Guid CustomerGuid { get; set; }
 

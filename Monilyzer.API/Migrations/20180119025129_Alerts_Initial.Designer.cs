@@ -13,9 +13,10 @@ using System;
 namespace Monilyzer.API.Migrations
 {
     [DbContext(typeof(MonilyzerContext))]
-    partial class MonilyzerContextModelSnapshot : ModelSnapshot
+    [Migration("20180119025129_Alerts_Initial")]
+    partial class Alerts_Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -66,7 +66,7 @@ namespace Monilyzer.API
             });
 
             services.AddSingleton<IConfiguration>(Configuration);
-            services.AddSingleton<IHostedService, AlertService>();
+            services.AddSingleton<IHostedService, AlertHostedService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

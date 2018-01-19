@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Monilyzer.Model.Enums;
 
 namespace Monilyzer.Model
 {
@@ -10,24 +11,15 @@ namespace Monilyzer.Model
         [Key]
         public Guid Guid { get; set; }
 
-        /// <summary>
-        /// Customer Name.
-        /// </summary>
         public string Name { get; set; }
+
+        public Status Status { get; set; }
 
         public virtual List<Location> Locations { get; set; } = new List<Location>();
 
-        public bool ShouldSerializeLocations()
-        {
-            return Locations.Count > 0;
-        }
-
         public virtual List<Node> Nodes { get; set; } = new List<Node>();
 
-        public bool ShouldSerializeNodes()
-        {
-            return Nodes.Count > 0;
-        }
+        public List<ActiveAlert> ActiveAlerts { get; set; } = new List<ActiveAlert>();
 
         public void Update(Customer customer)
         {

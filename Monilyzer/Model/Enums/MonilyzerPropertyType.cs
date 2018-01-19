@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Monilyzer.Model.Enums
 {
-    public enum MonilyzerObjectType
+   public enum MonilyzerPropertyType
     {
         None,
-        Node,
-        Location,
-        Customer
+        Status
     }
 }

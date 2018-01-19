@@ -23,6 +23,10 @@ namespace Monilyzer.API.Data
 
         public DbSet<UserRole> UserRoles { get; set; }
 
+        public DbSet<AlertDefinition> AlertDefinitions { get; set; }
+
+        public DbSet<ActiveAlert> ActiveAlerts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
